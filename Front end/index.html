@@ -1,1 +1,168 @@
+<!DOCTYPE html>
+<html>
 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search for Salon</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="icon" href="images/icon.jpg" type="image/x-icon">
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <!--    header-->
+    <section id="header">
+        <div class="background">
+            <div class="menu-bar">
+                <nav class="navbar navbar-expand-lg navbar-light"> <a class="navbar-brand" href="#">Search for Salon</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item "> <a class="nav-link" href="#">Home </a> </li>
+                            <li class="nav-item"> <a class="nav-link" href="#add-salon">Add Salon</a> </li>
+                            <li class="nav-item">
+                                <a class="nav-link sign-in">
+                                    <button type="button" class="btn btn-outline-light">Sign in</button>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div class="banner text-center">
+                <h1>SALONS AROUND YOU</h1>
+                <p>Treat yourself near you</p>
+            </div>
+        </div>
+    </section>
+    <div class="search-salon text-center">
+        <div class="form-group col-md-12">
+
+            <select id="inputState" class="form-control">
+                <option selected>Location</option>
+                <option>Uttara</option>
+                <option>Bashundhara R/A</option>
+                <option>Bonani</option>
+                <option>Khilkhet</option>
+                <option>Dhanmondi</option>
+                <option>Khilgaon</option>
+            </select>
+        </div>
+
+        <div class="form-group col-md-12">
+            <select class="form-control" id="exampleFormControlSelect1">
+                <option>Selete Service type</option>
+                <option>Booking for walk in</option>
+                <option>Home service</option>
+            </select>
+        </div>
+        <input type="button text-center" class="btn btn-primary" value="Search">
+    </div>
+    <!--    Top Salons-->
+    <section id="top-salons">
+        <div class="container ">
+            <h3>TOP SALONS</h3>
+            <div class="card-deck">
+                <div class="card"> <img src="images/2.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Uttara Exclusive Salon</h5>
+                        <p class="card-text">orem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">House- 37, Road No 21, Sector- 14, Uttara</li>
+                        <li class="list-group-item">Open</li>
+                        <li class="list-group-item">Opens 10AM</li>
+                    </ul>
+                    <div class="card-body"> <a href="#" class="card-link">Book now</a> <a href="#" class="card-link">01671-099135</a> </div>
+                    <div class="card-footer"> <small class="text-muted">4.6 km away</small> </div>
+                </div>
+                <div class="card"> <img src="images/3.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Signature Salon</h5>
+                        <p class="card-text">orem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">House- 37, Road No 21, Sector- 14, Uttara</li>
+                        <li class="list-group-item">Open</li>
+                        <li class="list-group-item">Opens 9.30AM</li>
+                    </ul>
+                    <div class="card-body"> <a href="#" class="card-link">Book now</a> <a href="#" class="card-link">01671-099135</a> </div>
+                    <div class="card-footer"> <small class="text-muted">2.7 km away</small> </div>
+                </div>
+                <div class="card"> <img src="images/4.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Uttara VIP Salon</h5>
+                        <p class="card-text">orem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">House- 37, Road No 21, Sector- 14, Uttara</li>
+                        <li class="list-group-item">Closed ⋅ </li>
+                        <li class="list-group-item">Opens 9AM</li>
+                    </ul>
+                    <div class="card-body"> <a href="#" class="card-link">Book now</a> <a href="#" class="card-link">01671-099135</a> </div>
+                    <div class="card-footer"> <small class="text-muted">3.2 km away</small> </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="add-salon">
+        <div class="add-salon-details">
+            <form>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <h2> Add salon</h2>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail4">Email</label>
+                        <input type="email" class="form-control" id="inputEmail4"> </div>
+                    
+                    <div class="form-group col-md-6">
+                        <label for="inputPassword4">Password</label>
+                        <input type="password" class="form-control" id="inputPassword4"> </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail4">Salon name</label>
+                        <input type="email" class="form-control" id="inputname" placeholder="Enter salon name..."> </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress">Address</label>
+                    <input type="text" class="form-control" id="inputAddress" placeholder="Type your address here.."> </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="inputState">City</label>
+                        <select id="inputState" class="form-control">
+                            <option selected>Choose...</option>
+                            <option>Uttara</option>
+                            <option>Bashundhara R/A</option>
+                            <option>Bonani</option>
+                            <option>Khilkhet</option>
+                            <option>Dhanmondi</option>
+                            <option>Khilgaon</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="inputZip">Zip</label>
+                        <input type="text" class="form-control" id="inputZip"> </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-check">
+                        <a href="#">Terms & Conditions<br /></a>
+                        <input class="form-check-input" type="checkbox" id="gridCheck">
+                        <label class="form-check-label" for="gridCheck">Agree with all terms and conditions </label>
+                    </div>
+                </div>
+                <a href="#">
+                    <button type="submit" class="btn btn-primary" value="Add Salon">Add Salon</button>
+                </a>
+            </form>
+        </div>
+    </section>
+    <!----------   footer----------->
+    <div class="footer">
+        <div class="footer-content"> </div>
+        <div class="footer-bottom"> &copy; searchforsalon.com | 2020 </div>
+    </div>
+</body></html>
