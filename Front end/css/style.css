@@ -3,10 +3,12 @@
     margin: 0;
     font-family: sans-serif;
 }
-html, body{
+
+html,
+body {
     height: 100%;
-    
 }
+
 .menu-bar {
     background-color: transparent;
     border-bottom: 1px solid white;
@@ -22,12 +24,6 @@ html, body{
     font-size: 16px;
     color: #fff !important;
     margin: 2px;
-}
-
-.sign-in .btn-outline-light {
-    border-radius: 40px;
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1));
-    margin-top: -5px;
 }
 
 .nav-link:hover {
@@ -46,9 +42,8 @@ html, body{
     border: none;
 }
 
-
 .background {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/1.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(images/1.jpg);
     background-size: cover;
     background-position: center;
 }
@@ -84,12 +79,17 @@ html, body{
 }
 
 .search-salon .btn-primary {
-    border-radius: 0;
+    border-radius: 50px;
     box-shadow: none !important;
     border: none !important;
     display: inline-flex;
     margin: 5px;
     padding: 5px 20px;
+    align-self: auto;
+}
+
+.form-group .btn {
+    align-content: flex-end;
 }
 
 
@@ -117,26 +117,161 @@ h3::before {
     border-bottom-right-radius: 90px;
 }
 
+.appointment-left h2 {
+    margin-top: 20px;
+    font-size: 38px;
+    text-align: center;
+    color: #bb9d52;
+    font-weight: 700;
+}
+
+.appointment-left h2::before {
+    content: '';
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+    width: 50px;
+    height: 30px;
+    position: absolute;
+    z-index: -10;
+    margin-top: -15px;
+    border-top-left-radius: 70px;
+    border-bottom-right-radius: 90px;
+}
+
+.appointment-time ul {}
+
+.appointment-time ul li {
+    color: #ffffff;
+    list-style-type: none;
+    margin-bottom: 40px;
+    border-bottom: 2px dotted #111111;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 400;
+    line-height: 34px;
+}
+
+.appointment-time ul li span {
+    background: #343a40;
+    position: relative;
+    top: 5px;
+    padding: 0 5px;
+    display: inline-block;
+}
+
+.appointment-time ul li span:last-child {
+    float: right;
+}
+
+
+/*--------Sign in/up pop up-------*/
+
+input[type=text],
+input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+button:hover {
+    opacity: 1;
+}
+
+.cancelbtn,
+.signInbtn {
+    float: left;
+    width: 50%;
+    height: 52px;
+}
+
+.container-pop {
+    padding: 16px;
+    width: 480px !important;
+    margin: 0 auto;
+}
+
+.container-pop h1 {
+    color: #fff;
+}
+
+
+/* The Modal  */
+
+.modal {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: #474e5d;
+    opacity: 0.95;
+    padding-top: 50px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    position: absolute;
+    right: 35px;
+    top: 15px;
+    font-size: 40px;
+    font-weight: bold;
+    color: #f1f1f1;
+}
+
+.close:hover,
+.close:focus {
+    color: #f44336;
+    cursor: pointer;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+@media screen and (max-width: 300px) {
+    .cancelbtn,
+    .signInbtn {
+        width: 100%;
+    }
+}
+
+
 /*---------footer-------*/
 
-.footer{
+.footer {
     background: #303036;
     color: #d3d3d3;
-    height: 150px; 
+    height: 150px;
     position: relative;
 }
-.footer .footer-content{
+
+.footer .footer-content {
     border: 1px solid white;
     margin-bottom: 5px;
     height: 100px;
     display: flex;
 }
-.footer .footer-content .footer-section{
+
+.footer .footer-content .footer-section {
     padding: 5px;
     flex: 1;
 }
-.footer .footer-bottom{
-    background:#343a40;
+
+.footer .footer-bottom {
+    background: #343a40;
     color: #686868;
     height: 50px;
     width: 100%;
@@ -146,19 +281,18 @@ h3::before {
     left: 0px;
     padding-top: 10px;
 }
-.add-salon-details{
+
+.add-salon-details {
     height: 100%;
     width: 50%;
     margin: 50px auto;
     padding: 10px 10px;
     border-bottom: 1px solid black;
     border-top: 1px solid black;
-   
-   
-
 }
 
+.appointment-time {}
 
-
-
-
+.business-hours {
+    margin: 5% auto 0 auto;
+}
