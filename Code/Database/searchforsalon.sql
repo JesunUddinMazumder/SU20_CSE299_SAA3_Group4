@@ -1,9 +1,4 @@
---
--- Database: `Searchforsalon`
--- ********How to import**********
--- 1.New database => Searchforsalon => Create
--- 2.Go Import => Choose File => Open Searchforsalon.sql => Go
---
+
 
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
