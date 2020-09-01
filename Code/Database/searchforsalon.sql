@@ -33,6 +33,83 @@ INSERT INTO `admin` (`id`, `UserName`, `Password`, `updationDate`) VALUES
 -- Table structure for table `tblbooking`
 --
 
+CREATE TABLE IF NOT EXISTS `tblbooking` (
+`id` int(11) NOT NULL,
+  `userEmail` varchar(100) DEFAULT NULL,
+  `SalonId` int(11) DEFAULT NULL,
+  `BookingDate` varchar(20) DEFAULT NULL,
+  `BookingTime` varchar(20) DEFAULT NULL,
+  `message` varchar(255) DEFAULT NULL,
+  `Status` int(11) DEFAULT NULL,
+  `PostingDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `tblbooking`
+--
+
+INSERT INTO `tblbooking` (`id`, `userEmail`, `SalonId`, `BookingDate`, `BookingTime`, `message`, `Status`, `PostingDate`) VALUES
+(1, 'test1@gmail.com', 1, '22/10/2020', '10AM', 'Lorem ipsum dolor sit amet', 1, '2020-08-30 20:15:43');
+
+
+
+
+--
+-- Table structure for table `tblsalons`
+--
+
+CREATE TABLE IF NOT EXISTS `tblsalons` (
+`id` int(11) NOT NULL,
+  `SalonsTitle` varchar(150) DEFAULT NULL,
+  `Salonslocation` int(11) DEFAULT NULL,
+  `SalonsOverview` longtext,
+  `StartingPrice` int(11) DEFAULT NULL,
+  `ServiceType` varchar(100) DEFAULT NULL,
+  `OpeningTime` int(6) DEFAULT NULL,
+  `SalonCapacity` int(11) DEFAULT NULL,
+  `Vimage1` varchar(120) DEFAULT NULL,
+  `Vimage2` varchar(120) DEFAULT NULL,
+  `Vimage3` varchar(120) DEFAULT NULL,
+  `Vimage4` varchar(120) DEFAULT NULL,
+  `Vimage5` varchar(120) DEFAULT NULL,
+  `AirConditioner` int(11) DEFAULT NULL,
+  `Spa` int(11) DEFAULT NULL,
+  `HairTreatment` int(11) DEFAULT NULL,
+  `Facial` int(11) DEFAULT NULL,
+  `RegDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `UpdationDate` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `tblsalon`
+--
+
+INSERT INTO `tblsalons` (`id`, `SalonsTitle`, `Salonslocation`, `SalonsOverview`, `StartingPrice`, `ServiceType`, `OpeningTime`, `SalonCapacity`, `Vimage1`, `Vimage2`, `Vimage3`, `Vimage4`, `Vimage5`, `AirConditioner`, `Spa`, `HairTreatment`, `Facial`, `RegDate`, `UpdationDate`) VALUES
+(1, 'ytb rvtr', '1', 'vtretrvet', 30, 'Book For Walk In', 10, 5, 'barber_service_01.jpg', 'barber_service_02.jpg', 'barber_service_03.jpg', 'barber_service_04.jpg', '', 1, 1, 1, 1, '2020-08-23 11:46:23', '2020-08-23 18:38:13');
+
+
+--
+-- Table structure for table `tbllocations`
+--
+
+CREATE TABLE IF NOT EXISTS `tbllocations` (
+`id` int(11) NOT NULL,
+  `LocationName` varchar(120) NOT NULL,
+  `CreationDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `UpdationDate` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+
+--
+-- Dumping data for table `tbllocations`
+--
+
+INSERT INTO `tbllocations` (`id`, `LocationName`, `CreationDate`, `UpdationDate`) VALUES
+(1, 'Uttara', '2020-08-23 16:24:34', '2020-08-23 16:26:34'),
+
+(2, 'Bashundhara', '2020-08-23 11:02:29', NULL);
+
+
+
 
 --
 -- Table structure for table `tblcontactusinfo`
@@ -50,7 +127,7 @@ CREATE TABLE IF NOT EXISTS `tblcontactusinfo` (
 --
 
 INSERT INTO `tblcontactusinfo` (`id`, `Address`, `EmailId`, `ContactNo`) VALUES
-(1, 'Test Demo test demo																									', 'test@test.com', '70007000');
+(1, 'Test Demo test demo																									', 'searchforsalon@gmail.com', '70007000');
 
 -- --------------------------------------------------------
 
@@ -95,9 +172,7 @@ CREATE TABLE IF NOT EXISTS `tblpages` (
 INSERT INTO `tblpages` (`id`, `PageName`, `type`, `detail`) VALUES
 (1, 'Terms and Conditions', 'terms', '<span style="color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat</span>'),
 (2, 'Privacy Policy', 'privacy', '<span style="color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat</span>'),
-(3, 'About Us ', 'aboutus', '<span style="color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; text-align: justify;">‘Search For Salon’ is a family-possessed business committed to giving perfection in our administration!
-
-Our committed group of beauticians, nails and skin specialists accompany innumerable long periods of involvement in the magnificence business. We endeavor to make each customer our need, ensuring we tune in to everything about that we feature every individual’s common magnificence.</span>'),
+(3, 'About Us ', 'aboutus', '<span style="color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; text-align: justify;">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat</span>'),
 (11, 'FAQs', 'faqs', '<span style="color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;">Address------Test &nbsp; &nbsp;dsfdsfds</span>');
 
 -- --------------------------------------------------------
@@ -182,11 +257,24 @@ INSERT INTO `tblusers` (`id`, `FullName`, `EmailId`, `Password`, `ContactNo`, `d
 --
 ALTER TABLE `admin`
  ADD PRIMARY KEY (`id`);
+ 
+ --
+-- Indexes for table `tblsalons`
+--
+ALTER TABLE `tblsalons`
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tblbooking`
 --
+ALTER TABLE `tblbooking`
+ ADD PRIMARY KEY (`id`);
 
+--
+-- Indexes for table `tbllocations`
+--
+ALTER TABLE `tbllocations`
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tblcontactusinfo`
@@ -235,8 +323,23 @@ ALTER TABLE `tblusers`
 ALTER TABLE `admin`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
+-- AUTO_INCREMENT for table `tblsalons`
+--
+
+ALTER TABLE `tblsalons`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tbllocations`
+--
+ALTER TABLE `tbllocations`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `tblbooking`
 --
+ALTER TABLE `tblbooking`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 
 
 --
