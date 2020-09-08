@@ -23,6 +23,7 @@ error_reporting(0);
     <link href="assets/css/slick.css" rel="stylesheet">
     <link href="assets/css/bootstrap-slider.min.css" rel="stylesheet">
     <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    
     <link rel="stylesheet" id="switcher-css" type="text/css" href="assets/switcher/css/switcher.css" media="all" />
     <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/red.css" title="red" media="all" data-default-color="true" />
     <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/orange.css" title="orange" media="all" />
@@ -60,21 +61,29 @@ error_reporting(0);
                             <div class="sidebar_filter">
                                 <form action="search-salonresult.php" method="post">
                                     <div class="form-group select">
-                                        <select class="form-control" name="brand">
+                                        <select class="form-control" name="location">
                                             <option>Select Location</option>
-                                            <option value="Uttara">Uttara</option>
-                                            <option value="Bashundhara R/A">Bashundhara R/A</option>
-                                            <option value="Khilkhet">Khilkhet</option>
-                                            <option value="Rajlokkhi">Rajlokkhi</option>
 
+                                            <?php $sql = "SELECT * from  tbllocations ";
+$query = $dbh -> prepare($sql);
+$query->execute();
+$results=$query->fetchAll(PDO::FETCH_OBJ);
+$cnt=1;
+if($query->rowCount() > 0)
+{
+foreach($results as $result)
+{       ?>
+                                            <option value="<?php echo htmlentities($result->id);?>"><?php echo htmlentities($result->LocationName);?></option>
+                                            <?php }} ?>
 
                                         </select>
                                     </div>
                                     <div class="form-group select">
-                                        <select class="form-control" name="fueltype">
+                                        <select class="form-control" name="servicetype">
                                             <option>Select Service Type</option>
                                             <option value="Book For Walk In">Book For Walk In</option>
                                             <option value="Home Service">Home Service</option>
+                                            <option value="Both">Both</option>
 
                                         </select>
                                     </div>
@@ -122,7 +131,7 @@ error_reporting(0);
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="resentnewsalon">
 
-                        <?php $sql = "SELECT tblsalons.SalonsTitle,tblbrands.SalonName,tblsalons.StartingPrice,tblsalons.BookingType,tblsalons.BookingDate,tblsalons.id,tblsalons.BookCapacity,tblsalons.SalonsOverview,tblsalons.Vimage1 from tblsalons join tblbrands on tblbrands.id=tblsalons.SalonsBrand";
+                        <?php $sql = "SELECT tblsalons.SalonsTitle,tbllocations.LocationName,tblsalons.StartingPrice,tblsalons.ServiceType,tblsalons.SalonEmail,tblsalons.id,tblsalons.SalonAddress,tblsalons.SalonsOverview,tblsalons.Vimage1 from tblsalons join tbllocations on tbllocations.id=tblsalons.Salonslocation LIMIT 6";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
@@ -135,20 +144,27 @@ foreach($results as $result)
 
                         <div class="col-list-3">
                             <div class="recent-salon-list">
-                                <div class="salon-info-box"> <a href="vehical-details.php?vhid=<?php echo htmlentities($result->id);?>"><img src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1);?>" class="img-responsive" alt="image"></a>
+                                <div class="salon-info-box"> <a href="salon-details.php?vhid=<?php echo htmlentities($result->id);?>"><img src="admin/img/salonimages/<?php echo htmlentities($result->Vimage1);?>" class="img-responsive" alt="image">
+                                    </a>
+
                                     <ul>
-                                        <li><i class="fa fa-book" aria-hidden="true"></i><?php echo htmlentities($result->BookingType);?></li>
-                                        <li><i class="fa fa-calendar" aria-hidden="true"></i><?php echo htmlentities($result->BookingDate);?> Model</li>
-                                        <li><i class="fa fa-user" aria-hidden="true"></i><?php echo htmlentities($result->BookCapacity);?> seats</li>
+                                        
+                                        <li><i class="fa fa-map-marker" aria-hidden="true"></i><?php echo htmlentities($result->LocationName);?> </li>
+                                        <li><i class="fa fa-user" aria-hidden="true"></i>Service Type: <?php echo htmlentities($result->ServiceType);?> </li>
+                                        <li><i class="fa fa-clock-o" aria-hidden="true"></i>Open: 10AM</li>
+
                                     </ul>
                                 </div>
                                 <div class="salon-title-m">
-                                    <h6><a href="vehical-details.php?vhid=<?php echo htmlentities($result->id);?>"><?php echo htmlentities($result->SalonName);?> , <?php echo htmlentities($result->SalonsTitle);?></a></h6>
-                                    <span class="price">$<?php echo htmlentities($result->StartingPrice);?> /tk</span>
+                                    <h6><a href="salon-details.php?vhid=<?php echo htmlentities($result->id);?>"><?php echo htmlentities($result->SalonsTitle);?> </a></h6>
+                                    <span class="price">৳<?php echo htmlentities($result->StartingPrice);?> tk</span>
                                 </div>
                                 <div class="inventory_info_m">
                                     <p><?php echo substr($result->SalonsOverview,0,70);?></p>
+                                    <a href="salon-details.php?vhid=<?php echo htmlentities($result->id);?>" class="btn outline btn-xs ">See More</a>
                                 </div>
+
+
                             </div>
                         </div>
                         <?php }}?>
@@ -227,7 +243,7 @@ foreach($results as $result)
 
 
                     <div class="testimonial-m">
-                        <div class="testimonial-img"> <img src="assets/images/cat-profile.png" alt="" /> </div>
+
                         <div class="testimonial-content">
                             <div class="testimonial-heading">
                                 <h5><?php echo htmlentities($result->FullName);?></h5>

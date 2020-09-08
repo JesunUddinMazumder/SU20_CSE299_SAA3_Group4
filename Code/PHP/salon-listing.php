@@ -87,7 +87,7 @@ $cnt=$query->rowCount();
 </div>
 </div>
 
-<?php $sql = "SELECT tblsalons.*,tblbrands.SalonName,tblbrands.id as bid  from tblsalons join tblbrands on tblbrands.id=tblsalons.SalonsBrand";
+<?php $sql = "SELECT tblsalons.*,tbllocations.LocationName,tbllocations.id as bid  from tblsalons join tbllocations on tbllocations.id=tblsalons.Salonslocation";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
@@ -100,14 +100,14 @@ foreach($results as $result)
           <div class="product-listing-img"><a><img src="admin/img/salonimages/<?php echo htmlentities($result->Vimage1);?>" class="img-responsive" alt="Image" /> </a>
           </div>
           <div class="product-listing-content">
-            <h5><a href="vehical-details.php?vhid=<?php echo htmlentities($result->id);?>"><?php echo htmlentities($result->SalonName);?> , <?php echo htmlentities($result->SalonsTitle);?></a></h5>
-            <p class="list-price">$<?php echo htmlentities($result->PriceMinimum);?> taka</p>
+            <h5><a href="salon-details.php?vhid=<?php echo htmlentities($result->id);?>"><?php echo htmlentities($result->SalonsTitle);?>, <?php echo htmlentities($result->LocationName);?></a></h5>
+            <p class="list-price">Starting Price: <?php echo htmlentities($result->StartingPrice);?> taka</p>
             <ul>
-              <li><i class="fa fa-user" aria-hidden="true"></i><?php echo htmlentities($result->ServiceCapacity);?> people</li>
-              <li><i class="fa fa-calendar" aria-hidden="true"></i><?php echo htmlentities($result->BookDate);?> bookdate</li>
-              <li><i class="fa fa-list" aria-hidden="true"></i><?php echo htmlentities($result->SalonType);?></li>
+              <li><i class="fa fa-map-marker" aria-hidden="true"></i><?php echo htmlentities($result->SalonAddress);?> Capacity</li>
+              <li><i class="fa fa-clock-o" aria-hidden="true"></i>Open: 10AM</li>
+              <li><i class="fa fa-snowflake-o" aria-hidden="true"></i><?php echo htmlentities($result->ServiceType);?></li>
             </ul>
-            <a href="vehical-details.php?vhid=<?php echo htmlentities($result->id);?>" class="btn">View Details <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
+            <a href="salon-details.php?vhid=<?php echo htmlentities($result->id);?>" class="btn">View Details <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
           </div>
         </div>
       <?php }} ?>
@@ -115,17 +115,17 @@ foreach($results as $result)
 
       <!--Side-Bar-->
       <aside class="col-md-3 col-md-pull-9">
-        <div class="sidebar_widget">
-          <div class="widget_heading">
-            <h5><i class="fa fa-search" aria-hidden="true"></i> Find Your Salon </h5>
-          </div>
-          <div class="sidebar_filter">
-            <form action="search-salonresult.php" method="post">
-              <div class="form-group select">
-                <select class="form-control" name="brand">
-                  <option>Select Location</option>
+           <div class="sidebar_widget">
+                            <div class="widget_heading">
+                                <h5><i class="fa fa-search" aria-hidden="true"></i> Find Your Salon </h5>
+                            </div>
+                            <div class="sidebar_filter">
+                                <form action="search-salonresult.php" method="post">
+                                    <div class="form-group select">
+                                        <select class="form-control" name="location">
+                                            <option>Select Location</option>
 
-                  <?php $sql = "SELECT * from  tblbrands ";
+                                            <?php $sql = "SELECT * from  tbllocations ";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
@@ -134,54 +134,29 @@ if($query->rowCount() > 0)
 {
 foreach($results as $result)
 {       ?>
-<option value="<?php echo htmlentities($result->id);?>"><?php echo htmlentities($result->SalonName);?></option>
-<?php }} ?>
+                                            <option value="<?php echo htmlentities($result->id);?>"><?php echo htmlentities($result->LocationName);?></option>
+                                            <?php }} ?>
 
-                </select>
-              </div>
-              <div class="form-group select">
-                <select class="form-control" name="fueltype">
-                  <option>Select Service Type</option>
-<option value="Book For Walk In">Book For Walk In</option>
-<option value="Home Service">Home Service</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group select">
+                                        <select class="form-control" name="servicetype">
+                                            <option>Select Service Type</option>
+                                            <option value="Book For Walk In">Book For Walk In</option>
+                                            <option value="Home Service">Home Service</option>
+                                            <option value="Both">Both</option>
 
-                </select>
-              </div>
+                                        </select>
+                                    </div>
 
-              <div class="form-group">
-                <button type="submit" class="btn btn-block"><i class="fa fa-search" aria-hidden="true"></i> Search Salon</button>
-              </div>
-            </form>
-          </div>
-        </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-block"><i class="fa fa-search" aria-hidden="true"></i> Search Salon</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
 
-        <div class="sidebar_widget">
-          <div class="widget_heading">
-            <h5><i class="fa fa-list" aria-hidden="true"></i> Recently Listed Salons</h5>
-          </div>
-          <div class="recent_addedsalons">
-            <ul>
-<?php $sql = "SELECT tblsalons.*,tblbrands.SalonName,tblbrands.id as bid  from tblsalons join tblbrands on tblbrands.id=tblsalons.SalonsBrand order by id desc limit 4";
-$query = $dbh -> prepare($sql);
-$query->execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
-$cnt=1;
-if($query->rowCount() > 0)
-{
-foreach($results as $result)
-{  ?>
 
-              <li class="gray-bg">
-                <div class="recent_post_img"> <a href="vehical-details.php?vhid=<?php echo htmlentities($result->id);?>"><img src="admin/img/salonimages/<?php echo htmlentities($result->Vimage1);?>" alt="image"></a> </div>
-                <div class="recent_post_title"> <a href="vehical-details.php?vhid=<?php echo htmlentities($result->id);?>"><?php echo htmlentities($result->SalonName);?> , <?php echo htmlentities($result->SalonsTitle);?></a>
-                  <p class="widget_price">$<?php echo htmlentities($result->PriceMinimum);?> taka</p>
-                </div>
-              </li>
-              <?php }} ?>
-
-            </ul>
-          </div>
-        </div>
       </aside>
       <!--/Side-Bar-->
     </div>
